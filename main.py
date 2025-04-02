@@ -1,9 +1,13 @@
 from stats import count_words
 from stats import count_letters
+import sys
 
 
 def main():
-    source = "books/frankenstein.txt"
+    if(len(sys.argv) != 2):
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    source = sys.argv[1]
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {source}...")
     with open(source) as f:
@@ -20,7 +24,6 @@ def print_report(word_count, letters):
     for letter_list in letters:
         print(f"{letter_list[0]}: {letter_list[1]}")
     print("============= END ===============")
-    return 0
 
 
 main()
